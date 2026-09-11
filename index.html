@@ -1,0 +1,868 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Juan Carlos Soto García</title>
+<meta name="description" content="Tech Lead y arquitecto de software — portafolio profesional con experiencia, stack y logros verificables.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📐</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700;9..144,900&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap">
+<style>
+  :root{
+    --bg: #EDEFF1;
+    --surface: #FFFFFF;
+    --surface-2: #E2E5E9;
+    --ink: #12161C;
+    --ink-soft: #4B5563;
+    --ink-faint: #7A8492;
+    --border: rgba(18,22,28,0.12);
+    --border-strong: rgba(18,22,28,0.22);
+    --accent: #B05F17;
+    --accent-ink: #7A4110;
+    --accent-tint: rgba(176,95,23,0.12);
+    --accent-tint-strong: rgba(176,95,23,0.22);
+    --grid-dot: rgba(18,22,28,0.10);
+    --shadow: 0 1px 2px rgba(18,22,28,0.06);
+
+    --font-display: 'Fraunces', Georgia, 'Times New Roman', serif;
+    --font-body: 'IBM Plex Sans', -apple-system, 'Segoe UI', Roboto, Arial, sans-serif;
+    --font-mono: 'IBM Plex Mono', 'SFMono-Regular', Consolas, monospace;
+
+    color-scheme: light;
+    scroll-behavior: smooth;
+  }
+
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --bg: #10141A;
+      --surface: #171C24;
+      --surface-2: #1E242E;
+      --ink: #E8EAEE;
+      --ink-soft: #A2AAB6;
+      --ink-faint: #737C89;
+      --border: rgba(232,234,238,0.10);
+      --border-strong: rgba(232,234,238,0.18);
+      --accent: #E39A55;
+      --accent-ink: #F3C793;
+      --accent-tint: rgba(227,154,85,0.14);
+      --accent-tint-strong: rgba(227,154,85,0.26);
+      --grid-dot: rgba(232,234,238,0.09);
+      --shadow: 0 1px 2px rgba(0,0,0,0.4);
+      color-scheme: dark;
+    }
+  }
+  :root[data-theme="dark"]{
+    --bg: #10141A;
+    --surface: #171C24;
+    --surface-2: #1E242E;
+    --ink: #E8EAEE;
+    --ink-soft: #A2AAB6;
+    --ink-faint: #737C89;
+    --border: rgba(232,234,238,0.10);
+    --border-strong: rgba(232,234,238,0.18);
+    --accent: #E39A55;
+    --accent-ink: #F3C793;
+    --accent-tint: rgba(227,154,85,0.14);
+    --accent-tint-strong: rgba(227,154,85,0.26);
+    --grid-dot: rgba(232,234,238,0.09);
+    --shadow: 0 1px 2px rgba(0,0,0,0.4);
+    color-scheme: dark;
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    :root{ scroll-behavior: auto; }
+    *,*::before,*::after{ animation-duration: 0.001ms !important; animation-iteration-count: 1 !important; transition-duration: 0.001ms !important; }
+  }
+
+  *{ box-sizing: border-box; }
+  body{
+    margin: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: var(--font-body);
+    font-size: 16px;
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+    padding: 0 20px;
+  }
+  img{ max-width: 100%; }
+
+  .wrap{ max-width: 1120px; margin: 0 auto; }
+  .prose{ max-width: 65ch; }
+
+  a{ color: inherit; }
+  a:focus-visible, button:focus-visible{ outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 2px; }
+
+  h1,h2,h3{ font-family: var(--font-display); font-weight: 700; text-wrap: balance; margin: 0; letter-spacing: -0.01em; }
+  .eyebrow{
+    font-family: var(--font-mono); font-size: 0.72rem; font-weight: 500;
+    letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent-ink);
+  }
+  .tabular{ font-variant-numeric: tabular-nums; }
+
+  /* ---------- NAV ---------- */
+  .nav{
+    position: sticky; top: 0; z-index: 20;
+    background: color-mix(in srgb, var(--bg) 88%, transparent);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--border);
+  }
+  .nav-inner{
+    max-width: 1120px; margin: 0 auto;
+    display: flex; align-items: center; justify-content: space-between;
+    gap: 16px; padding: 14px 0;
+  }
+  .nav-name{ font-family: var(--font-mono); font-size: 0.85rem; font-weight: 500; white-space: nowrap; }
+  .nav-links{ display: flex; gap: 22px; list-style: none; margin: 0; padding: 0; flex-wrap: wrap; }
+  .nav-links a{
+    font-family: var(--font-mono); font-size: 0.78rem; text-decoration: none;
+    color: var(--ink-soft); letter-spacing: 0.02em;
+  }
+  .nav-links a:hover{ color: var(--accent); }
+  .nav-cta{
+    font-family: var(--font-mono); font-size: 0.78rem; text-decoration: none;
+    color: var(--ink); border: 1px solid var(--border-strong); border-radius: 3px;
+    padding: 6px 12px; white-space: nowrap;
+  }
+  .nav-cta:hover{ border-color: var(--accent); color: var(--accent-ink); }
+  @media (max-width: 720px){ .nav-links{ display: none; } }
+
+  /* ---------- HERO ---------- */
+  .hero{
+    position: relative;
+    padding: 56px 0 48px;
+    border-bottom: 1px solid var(--border);
+    overflow: hidden;
+    animation: rise 0.5s ease-out both;
+  }
+  .hero::before{
+    content: "";
+    position: absolute; inset: 0;
+    background-image: radial-gradient(var(--grid-dot) 1px, transparent 1px);
+    background-size: 22px 22px;
+    -webkit-mask-image: linear-gradient(to bottom, black, transparent 85%);
+    mask-image: linear-gradient(to bottom, black, transparent 85%);
+    pointer-events: none;
+  }
+  .hero-grid{
+    position: relative;
+    display: grid; grid-template-columns: 1.25fr 1fr; gap: 48px; align-items: start;
+  }
+  @media (max-width: 860px){ .hero-grid{ grid-template-columns: 1fr; } }
+
+  .hero h1{ font-size: clamp(2.1rem, 4.4vw, 3.15rem); line-height: 1.08; margin-top: 14px; }
+  .hero h1 em{ font-style: italic; color: var(--accent-ink); }
+  .hero p.lede{ margin-top: 18px; color: var(--ink-soft); font-size: 1.06rem; max-width: 60ch; }
+
+  .sector-row{ display: flex; align-items: center; flex-wrap: wrap; gap: 8px; margin-top: 20px; }
+  .sector-label{ font-family: var(--font-mono); font-size: 0.68rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-faint); margin-right: 4px; }
+
+  .mini-stats{ display: flex; gap: 26px; flex-wrap: wrap; margin: -8px 0 26px; font-family: var(--font-mono); font-size: 0.82rem; color: var(--ink-soft); }
+  .mini-stats strong{ color: var(--accent-ink); font-weight: 600; margin-right: 6px; }
+
+  .cta-row{ display: flex; gap: 12px; flex-wrap: wrap; margin-top: 26px; }
+  .btn{
+    font-family: var(--font-mono); font-size: 0.82rem; text-decoration: none;
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 11px 18px; border-radius: 3px; border: 1px solid var(--border-strong);
+    transition: transform 0.15s ease, border-color 0.15s ease, background 0.15s ease;
+  }
+  .btn:hover{ transform: translateY(-1px); }
+  .btn-primary{ background: var(--accent); color: #fff; border-color: var(--accent); }
+  .btn-primary:hover{ background: var(--accent-ink); border-color: var(--accent-ink); }
+  .btn-ghost{ background: transparent; color: var(--ink); }
+  .btn-ghost:hover{ border-color: var(--accent); color: var(--accent-ink); }
+
+  /* stat panel */
+  .panel{
+    position: relative;
+    background: var(--surface); border: 1px solid var(--border);
+    border-radius: 4px; padding: 22px; box-shadow: var(--shadow);
+    overflow: hidden;
+  }
+  .panel-topo{ position: absolute; inset: 0; opacity: 0.55; pointer-events: none; }
+  .panel-label{
+    font-family: var(--font-mono); font-size: 0.68rem; letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--ink-faint); display: flex; justify-content: space-between; position: relative;
+  }
+  .stat-grid{ position: relative; display: grid; grid-template-columns: 1fr 1fr; gap: 1px; margin-top: 16px; background: var(--border); border: 1px solid var(--border); border-radius: 3px; overflow: hidden; }
+  .stat{ background: var(--surface); padding: 16px 14px; }
+  .stat .n{ font-family: var(--font-mono); font-weight: 600; font-size: 1.7rem; color: var(--accent-ink); }
+  .stat .l{ font-size: 0.78rem; color: var(--ink-soft); margin-top: 4px; }
+  .stat .c{ font-family: var(--font-mono); font-size: 0.66rem; color: var(--ink-faint); margin-top: 6px; letter-spacing: 0.01em; }
+
+  @keyframes rise{ from{ opacity: 0; transform: translateY(10px); } to{ opacity: 1; transform: translateY(0); } }
+
+  /* ---------- SECTION SCAFFOLDING ---------- */
+  section{ padding: 64px 0; border-bottom: 1px solid var(--border); }
+  section:last-of-type{ border-bottom: none; }
+  .section-head{ display: flex; justify-content: space-between; align-items: flex-end; gap: 24px; flex-wrap: wrap; margin-bottom: 34px; }
+  .section-head h2{ font-size: clamp(1.5rem, 2.6vw, 2rem); margin-top: 8px; }
+  .section-num{ font-family: var(--font-mono); font-size: 0.78rem; color: var(--ink-faint); }
+
+  /* ---------- COMPETENCIAS ---------- */
+  .comp-grid{ display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--border); border: 1px solid var(--border); border-radius: 4px; overflow: hidden; }
+  @media (max-width: 860px){ .comp-grid{ grid-template-columns: 1fr 1fr; } }
+  @media (max-width: 560px){ .comp-grid{ grid-template-columns: 1fr; } }
+  .comp-card{ background: var(--surface); padding: 24px; display: flex; flex-direction: column; gap: 12px; }
+  .comp-card h3{ font-size: 1.08rem; font-weight: 600; }
+  .comp-card .tag{ font-family: var(--font-mono); font-size: 0.68rem; color: var(--accent-ink); letter-spacing: 0.06em; text-transform: uppercase; }
+  .comp-card p{ margin: 0; font-size: 0.92rem; color: var(--ink-soft); flex: 1; }
+  .chip-row{ display: flex; flex-wrap: wrap; gap: 6px; }
+  .chip{
+    font-family: var(--font-mono); font-size: 0.68rem; color: var(--ink-soft);
+    border: 1px solid var(--border); border-radius: 3px; padding: 3px 8px;
+  }
+
+  /* ---------- LOGROS ---------- */
+  .achv-list{ display: flex; flex-direction: column; }
+  .achv{
+    display: grid; grid-template-columns: 140px 1fr; gap: 24px;
+    padding: 22px 0; border-top: 1px solid var(--border);
+  }
+  .achv:last-child{ border-bottom: 1px solid var(--border); }
+  @media (max-width: 640px){ .achv{ grid-template-columns: 1fr; gap: 8px; } }
+  .achv-tag{ font-family: var(--font-mono); font-size: 0.72rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--accent-ink); padding-top: 3px; }
+  .achv h3{ font-size: 1.05rem; font-weight: 600; margin-bottom: 6px; }
+  .achv p{ margin: 0; color: var(--ink-soft); font-size: 0.93rem; max-width: 68ch; }
+
+  /* ---------- DOMAIN MAP ---------- */
+  .table-scroll{ overflow-x: auto; border: 1px solid var(--border); border-radius: 4px; }
+  table{ width: 100%; border-collapse: collapse; min-width: 620px; background: var(--surface); }
+  thead th{
+    text-align: left; font-family: var(--font-mono); font-size: 0.68rem; letter-spacing: 0.08em; text-transform: uppercase;
+    color: var(--ink-faint); font-weight: 500; padding: 12px 16px; border-bottom: 1px solid var(--border-strong);
+    background: var(--surface-2);
+  }
+  tbody td{ padding: 14px 16px; border-bottom: 1px solid var(--border); font-size: 0.88rem; vertical-align: top; }
+  tbody tr:last-child td{ border-bottom: none; }
+  td.num{ font-family: var(--font-mono); text-align: right; color: var(--ink); }
+  td .sys{ font-family: var(--font-body); font-weight: 600; color: var(--ink); }
+  td .sys-desc{ display: block; color: var(--ink-faint); font-size: 0.8rem; margin-top: 4px; max-width: 42ch; }
+  td .role{ font-size: 0.8rem; color: var(--ink-soft); }
+  td .role.lead{ color: var(--accent-ink); font-weight: 500; }
+
+  /* ---------- TRAYECTORIA ---------- */
+  .tl-group{ margin-bottom: 36px; }
+  .tl-group:last-of-type{ margin-bottom: 44px; }
+  .tl-group-head{
+    font-family: var(--font-mono); font-size: 0.82rem; font-weight: 500; color: var(--ink);
+    padding-bottom: 10px; margin-bottom: 4px; border-bottom: 1px solid var(--border-strong);
+  }
+  .tl-rows{ display: flex; flex-direction: column; }
+  .tl-row{ display: grid; grid-template-columns: 190px 1fr; gap: 18px; padding: 13px 0; border-top: 1px solid var(--border); }
+  .tl-row:last-child{ border-bottom: 1px solid var(--border); }
+  @media (max-width: 640px){ .tl-row{ grid-template-columns: 1fr; gap: 4px; } }
+  .tl-role{ font-family: var(--font-mono); font-size: 0.7rem; letter-spacing: 0.04em; text-transform: uppercase; color: var(--ink-faint); padding-top: 2px; }
+  .tl-role.senior{ color: var(--accent-ink); font-weight: 500; }
+  .tl-row p{ margin: 0; font-size: 0.9rem; color: var(--ink-soft); max-width: 66ch; }
+  .tl-row p strong{ color: var(--ink); font-weight: 600; }
+  .tl-meta-grid{ display: grid; grid-template-columns: 1fr 1fr; gap: 32px; padding-top: 8px; border-top: 1px solid var(--border-strong); }
+  @media (max-width: 640px){ .tl-meta-grid{ grid-template-columns: 1fr; gap: 20px; } }
+  .tl-meta-text{ margin: 8px 0 0; font-size: 0.86rem; color: var(--ink-soft); line-height: 1.65; }
+
+  /* ---------- NOVEX ---------- */
+  .novex-intro{ color: var(--ink-soft); max-width: 68ch; margin-bottom: 28px; }
+  .novex-grid{ display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+  @media (max-width: 860px){ .novex-grid{ grid-template-columns: 1fr; } }
+  .novex-card{ background: var(--surface-2); border: 1px solid var(--border); border-radius: 4px; padding: 20px; display: flex; flex-direction: column; gap: 10px; }
+  .novex-status{ font-family: var(--font-mono); font-size: 0.66rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--accent-ink); }
+  .novex-card h3{ font-size: 1rem; font-weight: 600; }
+  .novex-card p{ margin: 0; font-size: 0.86rem; color: var(--ink-soft); flex: 1; }
+
+  /* ---------- STACK ---------- */
+  .stack-row{ display: grid; grid-template-columns: 160px 1fr; gap: 18px; padding: 14px 0; border-top: 1px solid var(--border); align-items: baseline; }
+  .stack-row:last-child{ border-bottom: 1px solid var(--border); }
+  @media (max-width: 640px){ .stack-row{ grid-template-columns: 1fr; gap: 8px; } }
+  .stack-label{ font-family: var(--font-mono); font-size: 0.72rem; letter-spacing: 0.06em; text-transform: uppercase; color: var(--ink-faint); }
+  .stack-items{ display: flex; flex-wrap: wrap; gap: 7px; }
+
+  /* ---------- FOOTER ---------- */
+  footer{ padding: 56px 0 60px; }
+  .footer-grid{ display: grid; grid-template-columns: 1.3fr 1fr; gap: 40px; }
+  @media (max-width: 720px){ .footer-grid{ grid-template-columns: 1fr; } }
+  footer h2{ font-size: clamp(1.6rem, 3vw, 2.1rem); }
+  footer .prose{ color: var(--ink-soft); margin-top: 14px; }
+  .footer-meta{ font-family: var(--font-mono); font-size: 0.76rem; color: var(--ink-faint); line-height: 1.7; }
+  .footer-meta a{ color: var(--ink-soft); text-decoration: underline; text-underline-offset: 2px; }
+  .footer-bottom{ margin-top: 40px; padding-top: 20px; border-top: 1px solid var(--border); font-family: var(--font-mono); font-size: 0.7rem; color: var(--ink-faint); display: flex; justify-content: space-between; flex-wrap: wrap; gap: 8px; }
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner wrap">
+    <span class="nav-name">JC SOTO GARCÍA</span>
+    <ul class="nav-links">
+      <li><a href="#competencias">Competencias</a></li>
+      <li><a href="#logros">Logros</a></li>
+      <li><a href="#sistemas">Sistemas</a></li>
+      <li><a href="#trayectoria">Trayectoria</a></li>
+      <li><a href="#stack">Stack</a></li>
+    </ul>
+    <a class="nav-cta" href="mailto:jnc.soga@gmail.com">Contactar →</a>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <span class="eyebrow">18+ años · Arquitecto de software</span>
+      <h1>Diseño, construyo y sostengo en producción sistemas <em>de misión crítica</em>.</h1>
+      <p class="lede">
+        Juan Carlos Soto García. Más de 18 años diseñando y liderando soluciones para gobierno, banca,
+        energía, salud y entretenimiento en México y Latinoamérica. Hoy, en mi rol principal, opero el
+        ciclo completo de una plataforma de crédito estructurado multi-lender: escribo backend en
+        Python/FastAPI, frontend en Angular y la infraestructura en Terraform sobre GCP que lo despliega
+        — y soy el punto de integración por el que pasa el código del equipo antes de llegar a
+        producción.
+      </p>
+      <div class="sector-row">
+        <span class="sector-label">Sectores</span>
+        <span class="chip">Gobierno</span><span class="chip">Banca y financiero</span>
+        <span class="chip">Energía</span><span class="chip">Salud</span>
+        <span class="chip">Entretenimiento</span><span class="chip">Bienes raíces</span>
+      </div>
+      <div class="cta-row">
+        <a class="btn btn-primary" href="mailto:jnc.soga@gmail.com">Escríbeme por correo</a>
+        <a class="btn btn-ghost" href="https://www.linkedin.com/in/jncsoga/" target="_blank" rel="noopener">LinkedIn</a>
+        <a class="btn btn-ghost" href="https://github.com/CarlosSotoGarcia" target="_blank" rel="noopener">GitHub</a>
+      </div>
+    </div>
+
+    <div class="panel">
+      <svg class="panel-topo" viewBox="0 0 300 220" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+        <g stroke="var(--border-strong)" stroke-width="1" fill="none">
+          <line x1="150" y1="40" x2="60" y2="100"></line>
+          <line x1="150" y1="40" x2="150" y2="105"></line>
+          <line x1="150" y1="40" x2="240" y2="100"></line>
+          <line x1="60" y1="100" x2="30" y2="170"></line>
+          <line x1="60" y1="100" x2="95" y2="175"></line>
+          <line x1="240" y1="100" x2="205" y2="175"></line>
+          <line x1="240" y1="100" x2="270" y2="170"></line>
+        </g>
+        <g fill="var(--accent)">
+          <circle cx="150" cy="40" r="5"></circle>
+        </g>
+        <g fill="var(--ink-faint)">
+          <circle cx="60" cy="100" r="4"></circle>
+          <circle cx="150" cy="105" r="4"></circle>
+          <circle cx="240" cy="100" r="4"></circle>
+          <circle cx="30" cy="170" r="3"></circle>
+          <circle cx="95" cy="175" r="3"></circle>
+          <circle cx="205" cy="175" r="3"></circle>
+          <circle cx="270" cy="170" r="3"></circle>
+        </g>
+      </svg>
+      <div class="panel-label"><span>Huella operativa</span><span>feb 2025 – sep 2026</span></div>
+      <div class="stat-grid">
+        <div class="stat">
+          <div class="n tabular">3,612</div>
+          <div class="l">MRs integrados</div>
+          <div class="c">22 proyectos GitLab</div>
+        </div>
+        <div class="stat">
+          <div class="n tabular">7</div>
+          <div class="l">Microservicios en producción</div>
+          <div class="c">Autor principal en 4</div>
+        </div>
+        <div class="stat">
+          <div class="n tabular">1,370</div>
+          <div class="l">Archivos de IaC propios</div>
+          <div class="c">Terraform · GCP</div>
+        </div>
+        <div class="stat">
+          <div class="n tabular">100%</div>
+          <div class="l">Cobertura exigida</div>
+          <div class="c">Backend, sin excepciones</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<section id="competencias">
+  <div class="wrap">
+    <div class="section-head">
+      <div>
+        <span class="section-num">01 — Competencias</span>
+        <h2>Lo que opero, no solo lo que conozco</h2>
+      </div>
+      <p class="prose" style="margin:0; color:var(--ink-soft); font-size:0.94rem; max-width:38ch;">
+        Un mismo ticket puede llevarme del esquema de Mongo al componente Angular y al módulo de
+        Terraform que lo despliega. No delego la capa que no me toca.
+      </p>
+    </div>
+
+    <div class="comp-grid">
+      <div class="comp-card">
+        <span class="tag">Backend</span>
+        <h3>Python / FastAPI</h3>
+        <p>Diseño y mantengo siete microservicios en producción sobre dos generaciones de despliegue
+          (AWS Lambda heredado y Cloud Run actual), con arquitectura por capas o por vertical slices
+          según el servicio.</p>
+        <div class="chip-row">
+          <span class="chip">FastAPI</span><span class="chip">Pydantic</span><span class="chip">pytest</span>
+          <span class="chip">MongoDB</span><span class="chip">DynamoDB</span><span class="chip">BigQuery</span>
+          <span class="chip">Cognito</span><span class="chip">uv / Poetry</span>
+        </div>
+      </div>
+
+      <div class="comp-card">
+        <span class="tag">Frontend</span>
+        <h3>Angular 18 / Module Federation</h3>
+        <p>Seis aplicaciones en micro-frontends: un shell que carga cuatro remotos en tiempo de
+          ejecución. Autoría acotada pero sostenida, con responsabilidad plena de integración
+          (~1,540 MRs revisados).</p>
+        <div class="chip-row">
+          <span class="chip">Angular 18</span><span class="chip">Signals</span><span class="chip">Module Federation</span>
+          <span class="chip">PrimeNG</span><span class="chip">Tailwind</span><span class="chip">Jest</span>
+        </div>
+      </div>
+
+      <div class="comp-card">
+        <span class="tag">Infraestructura</span>
+        <h3>Terraform / GCP</h3>
+        <p>1,370 archivos de IaC modificados. Patrón de dos capas — setup → app — enlazadas por
+          terraform_remote_state; migré los secretos en texto plano de cinco servicios a SOPS + AGE.</p>
+        <div class="chip-row">
+          <span class="chip">Terraform</span><span class="chip">Cloud Run</span><span class="chip">Cloud Workflows</span>
+          <span class="chip">Pub/Sub</span><span class="chip">Secret Manager</span><span class="chip">SOPS + AGE</span>
+        </div>
+      </div>
+
+      <div class="comp-card">
+        <span class="tag">CI/CD</span>
+        <h3>Gobierno del repositorio</h3>
+        <p>Pipelines de lint, pruebas, escaneo de seguridad y despliegue por entorno en GitLab CI y
+          Cloud Build. Gitflow con protección de ramas y squash diferenciado por tipo de merge.</p>
+        <div class="chip-row">
+          <span class="chip">GitLab CI</span><span class="chip">Cloud Build</span><span class="chip">Kaniko</span>
+          <span class="chip">gitleaks</span><span class="chip">semantic-release</span>
+        </div>
+      </div>
+
+      <div class="comp-card">
+        <span class="tag">Calidad y seguridad</span>
+        <h3>QA end-to-end</h3>
+        <p>Cobertura al 100% exigida en los servicios backend, sin pragma: no cover. Revisión
+          sistemática de exposición de datos, secretos, autenticación y autorización en cada cambio.</p>
+        <div class="chip-row">
+          <span class="chip">Playwright</span><span class="chip">Behave</span><span class="chip">pytest</span>
+          <span class="chip">Squash TM</span>
+        </div>
+      </div>
+
+      <div class="comp-card">
+        <span class="tag">Automatización + IA</span>
+        <h3>Herramienta interna</h3>
+        <p>Tablero propio de vigilancia de MRs con estado persistido, reporte de actividad por
+          ingeniero y generación asistida de pruebas de humo QA desde historias de Jira.</p>
+        <div class="chip-row">
+          <span class="chip">Claude Code</span><span class="chip">MongoDB</span><span class="chip">Automatización QA</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="logros">
+  <div class="wrap">
+    <div class="section-head">
+      <div>
+        <span class="section-num">02 — Logros</span>
+        <h2>Programas que cerré, no solo tareas</h2>
+      </div>
+    </div>
+
+    <div class="achv-list">
+      <div class="achv">
+        <span class="achv-tag">Performance</span>
+        <div>
+          <h3>Programa de remediación de rendimiento (2026)</h3>
+          <p>Diagnóstico y ejecución de una auditoría transversal traducida en ~50 tareas, organizadas
+            en cuatro frentes — backend, frontend, infraestructura y defectos de producto. Incluyó
+            indexación de siete colecciones, caché en endpoints de gráficas y corrección de cálculos
+            financieros erróneos visibles para el cliente.</p>
+        </div>
+      </div>
+      <div class="achv">
+        <span class="achv-tag">Migración</span>
+        <div>
+          <h3>Migración a driver asíncrono nativo</h3>
+          <p>En el servicio de operaciones de portafolio: migración completa a un driver de base de
+            datos asíncrono nativo, con un gate de CI que bloquea llamadas async sin await, aterrizado
+            en el mismo commit que la migración para no dejar ventana de divergencia. Suite final:
+            2,741 pruebas en verde.</p>
+        </div>
+      </div>
+      <div class="achv">
+        <span class="achv-tag">Seguridad</span>
+        <div>
+          <h3>Migración de secretos a SOPS (Fase 1)</h3>
+          <p>Traslado de credenciales de los cinco servicios de la plataforma a secretos cifrados en
+            repositorio, con rotación incluida y verificación de referencias indexadas — un control
+            derivado de un plan previo fallido y convertido en checklist permanente.</p>
+        </div>
+      </div>
+      <div class="achv">
+        <span class="achv-tag">Cloud</span>
+        <div>
+          <h3>Migración de una plataforma de monitoreo a GCP</h3>
+          <p>Épica propia de traslado de un sistema de monitoreo de portafolio desde AWS hacia Google
+            Cloud, con convivencia controlada de ambas rutas de despliegue durante la transición.</p>
+        </div>
+      </div>
+      <div class="achv">
+        <span class="achv-tag">Negocio</span>
+        <div>
+          <h3>Configuración de nuevos lenders</h3>
+          <p>Puesta en marcha de la plataforma para nuevas instituciones financieras, abarcando
+            configuración, datos y validación de extremo a extremo.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="sistemas">
+  <div class="wrap">
+    <div class="section-head">
+      <div>
+        <span class="section-num">03 — Mapa de dominio</span>
+        <h2>Sistemas que sostengo</h2>
+      </div>
+    </div>
+
+    <div class="table-scroll">
+      <table>
+        <thead>
+          <tr><th>Frente</th><th>Rol</th><th style="text-align:right;">Commits propios</th><th style="text-align:right;">MRs integrados</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><span class="sys">ETL de fideicomisos</span><span class="sys-desc">Orquestación de extracción y carga a un data warehouse analítico con workflows administrados en la nube.</span></td>
+            <td><span class="role lead">Autor principal</span></td>
+            <td class="num tabular">662</td><td class="num tabular">403</td>
+          </tr>
+          <tr>
+            <td><span class="sys">Operaciones y analítica de portafolio</span><span class="sys-desc">Motor de cálculos financieros y reglas de negocio sobre las operaciones de trust.</span></td>
+            <td><span class="role lead">Autor principal</span></td>
+            <td class="num tabular">273</td><td class="num tabular">417</td>
+          </tr>
+          <tr>
+            <td><span class="sys">Estados financieros con IA</span><span class="sys-desc">Extracción automatizada de estados financieros vía eventos, con modelos de IA aplicados al documento.</span></td>
+            <td><span class="role lead">Autor principal</span></td>
+            <td class="num tabular">269</td><td class="num tabular">477</td>
+          </tr>
+          <tr>
+            <td><span class="sys">Datos maestros</span><span class="sys-desc">Gestión de datos maestros de empresas y contactos del portafolio.</span></td>
+            <td><span class="role lead">Autor principal</span></td>
+            <td class="num tabular">206</td><td class="num tabular">280</td>
+          </tr>
+          <tr>
+            <td><span class="sys">Portal del cliente</span><span class="sys-desc">Arquitectura de micro-frontends: host que carga en tiempo de ejecución los módulos remotos del portal.</span></td>
+            <td><span class="role">Integrador + desarrollo</span></td>
+            <td class="num tabular">127</td><td class="num tabular">532</td>
+          </tr>
+          <tr>
+            <td><span class="sys">Matriz financiera y covenants</span><span class="sys-desc">Cálculo de covenants y visualizaciones financieras para el seguimiento del portafolio.</span></td>
+            <td><span class="role">Desarrollo + integración</span></td>
+            <td class="num tabular">96</td><td class="num tabular">245</td>
+          </tr>
+          <tr>
+            <td><span class="sys">Panel de administración</span><span class="sys-desc">Gestión de usuarios, roles y plantillas para el equipo operativo.</span></td>
+            <td><span class="role">Desarrollo + integración</span></td>
+            <td class="num tabular">85</td><td class="num tabular">120</td>
+          </tr>
+          <tr>
+            <td><span class="sys">Identidad y notificaciones</span><span class="sys-desc">Autenticación y envío de notificaciones, mantenido y migrado sobre serverless (AWS Lambda / DynamoDB).</span></td>
+            <td><span class="role">Mantenimiento + migración</span></td>
+            <td class="num tabular">58</td><td class="num tabular">130</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<section id="trayectoria">
+  <div class="wrap">
+    <div class="section-head">
+      <div>
+        <span class="section-num">04 — Trayectoria</span>
+        <h2>18 años, de desarrollador a arquitecto</h2>
+      </div>
+      <p class="prose" style="margin:0; color:var(--ink-soft); font-size:0.94rem; max-width:38ch;">
+        Antes de la plataforma actual, diseñé y lideré soluciones para gobierno, banca y servicios
+        financieros en México y Latinoamérica — de ingeniero a arquitecto de equipos de hasta 15
+        personas.
+      </p>
+    </div>
+
+    <div class="tl-group">
+      <div class="tl-group-head">Quarksoft</div>
+      <div class="tl-rows">
+        <div class="tl-row">
+          <span class="tl-role">Ingeniero de software</span>
+          <p><strong>ISSSTE</strong> — Expediente Clínico Electrónico (IsssteMed).</p>
+        </div>
+        <div class="tl-row">
+          <span class="tl-role">Ingeniero de software</span>
+          <p><strong>G&amp;D</strong> — Vault Management System, Next Generation Release 2.0.</p>
+        </div>
+        <div class="tl-row">
+          <span class="tl-role">Ingeniero de software</span>
+          <p><strong>PGR</strong> — Sistema de extracción de fuentes de información.</p>
+        </div>
+        <div class="tl-row">
+          <span class="tl-role">Ingeniero de software</span>
+          <p><strong>PGR</strong> — Indexador de documentos sobre Solr.</p>
+        </div>
+        <div class="tl-row">
+          <span class="tl-role">Líder de proyecto</span>
+          <p><strong>Gobierno del Estado de Zacatecas</strong> — Sistema de Conciliación Bancaria (SCB).</p>
+        </div>
+        <div class="tl-row">
+          <span class="tl-role">Líder de proyecto</span>
+          <p><strong>Gobierno del Estado de Zacatecas</strong> — Kioko, firma electrónica.</p>
+        </div>
+        <div class="tl-row">
+          <span class="tl-role">Líder de proyecto</span>
+          <p><strong>Gobierno del Estado de Zacatecas</strong> — Sistema de Recursos Humanos.</p>
+        </div>
+        <div class="tl-row">
+          <span class="tl-role">Líder de proyecto</span>
+          <p><strong>Ethan Gas &amp; Oil</strong> — Sistema de inventario de aditivos.</p>
+        </div>
+        <div class="tl-row">
+          <span class="tl-role senior">Arquitecto de software</span>
+          <p><strong>Ministerio de Hacienda, Gobierno de Paraguay</strong> — arquitectura del Sistema de
+            Integración y Administración de Recursos del Estado (SIARE), al frente de un equipo de 15
+            ingenieros durante 2 años.</p>
+        </div>
+        <div class="tl-row">
+          <span class="tl-role senior">Arquitecto de software</span>
+          <p><strong>Nacional Monte de Piedad</strong> — arquitectura y liderazgo técnico de MIDAS y la
+            app MiMonte, con un equipo de 10 ingenieros de desarrollo y QA durante un año.</p>
+        </div>
+        <div class="tl-row">
+          <span class="tl-role senior">Arquitecto de software</span>
+          <p><strong>Proyectos México</strong> — migración de la plataforma de WordPress a un gestor de
+            contenidos propio (Java, Angular).</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="tl-group">
+      <div class="tl-group-head">CYR IT Solutions</div>
+      <div class="tl-rows">
+        <div class="tl-row">
+          <span class="tl-role">Líder de proyecto</span>
+          <p><strong>Funerales Hernández</strong> — sistema de gestión para el grupo funerario.</p>
+        </div>
+        <div class="tl-row">
+          <span class="tl-role">Líder de proyecto</span>
+          <p><strong>Datum International Services</strong> — sistema de gestión de manuales.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="tl-group">
+      <div class="tl-group-head">Consultoría independiente — Monou (plataforma de torneos de esports)</div>
+      <div class="tl-rows">
+        <div class="tl-row">
+          <span class="tl-role senior">Desarrollo backend</span>
+          <p>Arquitectura de actores con event sourcing y cluster sharding distribuido (Apache Pekko)
+            para un microservicio de chat en tiempo real; WebSocket, integración con la API de torneos
+            y sistema de moderación. Corregí una vulnerabilidad de escalación de privilegios y
+            diagnostiqué un caso de split-brain en persistencia distribuida.</p>
+        </div>
+        <div class="tl-row">
+          <span class="tl-role">Desarrollo frontend</span>
+          <p>Mayor contribuyente individual del cliente Angular del chat: librería npm publicable,
+            estado reactivo con RxJS, panel de moderación en vivo y visualización de brackets.</p>
+        </div>
+        <div class="tl-row">
+          <span class="tl-role">Infraestructura</span>
+          <p>Remoción de credenciales expuestas en el repositorio y diseño del pipeline para separar
+            los ambientes de staging y producción en AWS (ECS, Secrets Manager, migraciones con
+            Flyway).</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="tl-meta-grid">
+      <div>
+        <span class="stack-label">Formación</span>
+        <p class="tl-meta-text">Maestría en Sistemas Computacionales — Instituto Tecnológico de Zacatecas<br>
+          Licenciatura en Informática — Instituto Tecnológico de Zacatecas</p>
+      </div>
+      <div>
+        <span class="stack-label">Certificaciones</span>
+        <p class="tl-meta-text">Introduction to CMMI for Development (v1.3 y v2.0) · Liderazgo y
+          Empowerment, ITESM CCM · Scrum Master Certified · Certified Professional Ethical Hacker</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="novex">
+  <div class="wrap">
+    <div class="section-head">
+      <div>
+        <span class="section-num">05 — Iniciativa propia</span>
+        <h2>Productos propios, de cero a producción</h2>
+      </div>
+    </div>
+    <p class="novex-intro">
+      Diseño y despliego SaaS multi-tenant completos por mi cuenta — PRD, ADRs, backend, frontend y
+      despliegue en GCP — como práctica deliberada de mantener el ciclo completo bajo control.
+    </p>
+    <div class="mini-stats">
+      <span><strong class="tabular">19</strong> repositorios públicos en GitHub</span>
+      <span><strong class="tabular">264+</strong> commits propios fuera del rol principal</span>
+    </div>
+    <div class="novex-grid">
+      <div class="novex-card">
+        <span class="novex-status">En producción</span>
+        <h3>Control de acceso residencial</h3>
+        <p>SaaS multi-tenant para fraccionamientos: invitaciones con QR firmado, control de acceso,
+          pagos de mantenimiento e incidencias. App móvil con Capacitor 8.</p>
+      </div>
+      <div class="novex-card">
+        <span class="novex-status">En desarrollo</span>
+        <h3>Agendas y fidelización</h3>
+        <p>Reservas y fidelización para negocios de servicios. Multi-tenancy schema-per-tenant en
+          PostgreSQL, notificaciones por WhatsApp y billetera digital.</p>
+      </div>
+      <div class="novex-card">
+        <span class="novex-status">Desplegado en GCP</span>
+        <h3>Traducción a Lengua de Señas</h3>
+        <p>Traductor de español a Lengua de Señas Mexicana con Gemini y selección dinámica de modelo
+          para audio; diccionario de glosas administrable.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="stack">
+  <div class="wrap">
+    <div class="section-head">
+      <div>
+        <span class="section-num">06 — Stack</span>
+        <h2>Herramientas de uso diario</h2>
+      </div>
+    </div>
+
+    <div class="stack-row">
+      <span class="stack-label">Lenguajes</span>
+      <div class="stack-items">
+        <span class="chip">Python</span><span class="chip">TypeScript</span><span class="chip">Java</span>
+        <span class="chip">.NET / C#</span><span class="chip">HCL / Terraform</span>
+        <span class="chip">Bash</span><span class="chip">SQL</span><span class="chip">Gherkin</span>
+      </div>
+    </div>
+    <div class="stack-row">
+      <span class="stack-label">Backend</span>
+      <div class="stack-items">
+        <span class="chip">FastAPI</span><span class="chip">Pydantic</span><span class="chip">pytest</span>
+        <span class="chip">uv</span><span class="chip">Poetry</span><span class="chip">Mangum</span>
+        <span class="chip">Serverless Framework</span><span class="chip">Spring</span>
+        <span class="chip">Hibernate / JPA</span><span class="chip">Node</span>
+      </div>
+    </div>
+    <div class="stack-row">
+      <span class="stack-label">Frontend</span>
+      <div class="stack-items">
+        <span class="chip">Angular 18</span><span class="chip">Module Federation</span><span class="chip">PrimeNG 18</span>
+        <span class="chip">Tailwind</span><span class="chip">Signals</span><span class="chip">RxJS</span><span class="chip">Jest</span>
+      </div>
+    </div>
+    <div class="stack-row">
+      <span class="stack-label">Datos</span>
+      <div class="stack-items">
+        <span class="chip">MongoDB</span><span class="chip">DynamoDB</span><span class="chip">BigQuery</span>
+        <span class="chip">Firestore</span><span class="chip">PostgreSQL</span><span class="chip">Oracle</span><span class="chip">MySQL</span>
+      </div>
+    </div>
+    <div class="stack-row">
+      <span class="stack-label">Cloud · GCP</span>
+      <div class="stack-items">
+        <span class="chip">Cloud Run</span><span class="chip">Cloud Build</span><span class="chip">Cloud Workflows</span>
+        <span class="chip">Cloud Tasks</span><span class="chip">Cloud Scheduler</span><span class="chip">Pub/Sub</span>
+        <span class="chip">Secret Manager</span><span class="chip">Artifact Registry</span><span class="chip">Firebase Hosting</span>
+      </div>
+    </div>
+    <div class="stack-row">
+      <span class="stack-label">Cloud · AWS</span>
+      <div class="stack-items">
+        <span class="chip">Lambda</span><span class="chip">DynamoDB</span><span class="chip">Cognito</span>
+        <span class="chip">SES</span><span class="chip">EKS</span><span class="chip">CodeBuild/CodePipeline</span>
+      </div>
+    </div>
+    <div class="stack-row">
+      <span class="stack-label">DevOps</span>
+      <div class="stack-items">
+        <span class="chip">Docker</span><span class="chip">GitLab CI</span><span class="chip">SOPS + AGE</span>
+        <span class="chip">pre-commit</span><span class="chip">gitleaks</span><span class="chip">semantic-release</span><span class="chip">Kaniko</span>
+      </div>
+    </div>
+    <div class="stack-row">
+      <span class="stack-label">QA</span>
+      <div class="stack-items">
+        <span class="chip">Playwright</span><span class="chip">Behave</span><span class="chip">Jest</span>
+        <span class="chip">JUnit</span><span class="chip">Squash TM</span><span class="chip">Sonar</span>
+      </div>
+    </div>
+    <div class="stack-row">
+      <span class="stack-label">Herramientas</span>
+      <div class="stack-items">
+        <span class="chip">Enterprise Architect</span><span class="chip">UML / BPM</span>
+        <span class="chip">Postman / Insomnia</span><span class="chip">SOAP UI</span><span class="chip">Active MQ</span>
+        <span class="chip">Pendo</span>
+      </div>
+    </div>
+    <div class="stack-row">
+      <span class="stack-label">Metodología</span>
+      <div class="stack-items">
+        <span class="chip">Gitflow</span><span class="chip">Conventional Commits</span><span class="chip">TDD</span>
+        <span class="chip">Scrum</span><span class="chip">PSP / TSP</span><span class="chip">CMMI</span>
+        <span class="chip">Microservicios</span><span class="chip">Micro-frontends</span><span class="chip">IaC</span><span class="chip">FinOps</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap footer-grid">
+    <div>
+      <span class="eyebrow">Trabajemos juntos</span>
+      <h2 style="margin-top:10px;">¿Buscas a alguien que sostenga la plataforma completa, no solo una capa?</h2>
+      <p class="prose">
+        Escríbeme si tu equipo necesita liderazgo técnico sobre backend, frontend e infraestructura a
+        la vez — o simplemente quieres comparar notas sobre arquitectura de plataformas complejas.
+      </p>
+      <div class="cta-row">
+        <a class="btn btn-primary" href="mailto:jnc.soga@gmail.com">jnc.soga@gmail.com</a>
+        <a class="btn btn-ghost" href="https://www.linkedin.com/in/jncsoga/" target="_blank" rel="noopener">LinkedIn ↗</a>
+        <a class="btn btn-ghost" href="https://github.com/CarlosSotoGarcia" target="_blank" rel="noopener">GitHub ↗</a>
+      </div>
+    </div>
+    <div class="footer-meta">
+      Este perfil se construyó a partir de evidencia verificable: historial git local del rol actual
+      (19 meses, 391 días con actividad), metadatos de merge commits de 22 proyectos GitLab y consultas
+      JQL sobre Jira Cloud, más el historial profesional documentado en CV. Corte de datos: 10 de
+      septiembre de 2026.
+    </div>
+  </div>
+  <div class="wrap footer-bottom">
+    <span>Juan Carlos Soto García</span>
+    <span>Ciudad de México · Zacatecas</span>
+  </div>
+</footer>
+
+</body>
+</html>
